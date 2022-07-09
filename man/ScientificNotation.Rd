@@ -45,6 +45,28 @@ These functions perform conversions between floating-point numbers, engineering 
 \item \code{get_factor_eng}: Gets the factor before the base for a number
 }}
 
+\examples{
+{
+get_exp_eng(1000)
+# And also:
+exponent_to_si(3)
+
+si_to_exponent("nA")
+si_to_exponent("p")
+
+
+exponent_to_si(3)
+# But:
+exponent_to_si(2)
+
+get_exp_eng(1000)
+# And also:
+exponent_to_si(10000)
+
+get_factor_eng(1234)
+get_factor_eng(12345)
+}
+}
 \seealso{
 \link[sitools:f2si]{sitools::f2si()}
 }
