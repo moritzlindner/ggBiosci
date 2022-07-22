@@ -20,7 +20,7 @@ ggBAPlot<-function(data,
 
   suppressWarnings({
     data<-as.data.frame(pivot_wider(data,names_from = names_from, values_from = values_from))
-  })
+  },classes=c("warning","message"))
   data$mean<-apply(data[,grouplevels],1,mean)
   data$diff<-(data[,grouplevels[1]]-data[,grouplevels[2]])
 
