@@ -3,7 +3,7 @@
 #' Draws a Bland-Altman Plot for visually analyzing the agreement between two different assays using \link[ggplot2:ggplot]{ggplot2:;ggplot()}.
 #'
 #' @param data Data set to use for ploting - in a long format. If not already a data.frame, will be converted to one.
-#' @param assay_from,values_from Character strings indicating which column contains the assay identifier and the values, resp.
+#' @param names_from,values_from Character strings indicating which column contains the assay identifier and the values, resp.
 #' @param unit SI unit of the data in \code{values_from}
 #' @return A ggplot
 #' @seealso \link[ggplot2:ggplot]{ggplot2::ggplot()}
@@ -12,13 +12,15 @@
 #' @importFrom tidyr pivot_wider
 #' @export ggBAPlot
 ggBAPlot<-function(data,
-                   assay_from,
+                   names_from,
                    values_from,
                    unit=""){
   data<-as.data.frame(data)
   grouplevels<-levels(data[,assay_from])
 
-  data<-as.data.frame(pivot_wider(data,assay_from = assay_from, values_from = values_from))
+  suppressWarnings({
+    data<-as.data.frame(pivot_wider(data,names_from = names_from, values_from = values_from))
+  })
   data$mean<-apply(data[,grouplevels],1,mean)
   data$diff<-(data[,grouplevels[1]]-data[,grouplevels[2]])
 
