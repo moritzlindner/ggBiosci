@@ -36,7 +36,7 @@ get_si <- function(val) {
 #' @export si_to_exponent
 si_to_exponent <- function(letter) {
   exponent <- seq(-24L, 24L, 3L)
-
+  letter <- substr(letter, 1, 1)
   if (letter == "\u03BC") {
     letter = "u"
   }
@@ -60,7 +60,7 @@ si_to_exponent <- function(letter) {
       "Z",
       "Y")
 
-  return(10 ^ exponent[sipref == substr(letter, 1, 1)])
+  return(10 ^ exponent[sipref == letter])
 }
 
 #' @importFrom sitools f2si

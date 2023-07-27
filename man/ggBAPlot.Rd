@@ -4,12 +4,12 @@
 \alias{ggBAPlot}
 \title{Bland-Altman plot}
 \usage{
-ggBAPlot(data, names_from, values_from, unit = "")
+ggBAPlot(data, names_from, values_from, group_from = NULL, unit = "")
 }
 \arguments{
-\item{data}{Default dataset to use for plot - in a long format. If not already a data.frame, will be converted to one.}
+\item{data}{Data set to use for ploting - in a long format. A data.frame.}
 
-\item{names_from, values_from}{Character strings indicating which column contains the group variable and the values, resp.}
+\item{names_from, values_from}{Character strings indicating which column contains the assay identifier and the values, resp.}
 
 \item{unit}{SI unit of the data in \code{values_from}}
 }
@@ -17,8 +17,8 @@ ggBAPlot(data, names_from, values_from, unit = "")
 A ggplot
 }
 \description{
-Draws a Bland-Altman Plot using \link[ggplot2:ggplot]{ggplot2:;ggplot()},
+Draws a Bland-Altman Plot for visually analyzing the agreement between two different assays using \link[ggplot2:ggplot]{ggplot2:;ggplot()}.
 }
 \seealso{
-\link[ggplot2:ggplot]{ggplot2:;ggplot()}
+\link[ggplot2:ggplot]{ggplot2::ggplot()}
 }
