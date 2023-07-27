@@ -1,7 +1,7 @@
 Package: ggBiosci
 Type: Package
 Title: Helper tools for common visualization tasks in bioscience
-Version: 0.1.0
+Version: 0.1.1
 Author: person("Moritz", "Lindner", email = "moritz@lindnerlab.de", role = c("aut", "cre"))
 Maintainer: Moritz Lindner <moritz@lindnerlab.de>
 Description: This package contains a set of functions for performing common visualization tasks in bioscience.
