@@ -33,6 +33,7 @@ get_si <- function(val) {
 
 #' @describeIn ScientificNotation Converts an SI prefix or full string into exponent
 #' @param letter SI prefix or full SI string
+#' @importFrom stringr str_length
 #' @export si_to_exponent
 si_to_exponent <- function(letter) {
   exponent <- seq(-24L, 24L, 3L)
@@ -59,7 +60,7 @@ si_to_exponent <- function(letter) {
         "E",
         "Z",
         "Y")
-    if (!is.null(exponent[sipref == letter])){
+    if (any(sipref == letter)){
       return(10 ^ exponent[sipref == letter])
     }else{
       return(1)
@@ -68,6 +69,33 @@ si_to_exponent <- function(letter) {
     return(1)
   }
 
+}
+
+
+#' Extract SI units from a given expression
+#'
+#' This function extracts the SI units from a given expression containing a numeric value and a unit.
+#'
+#' @param unit A character string containing the expression with a numeric value and a unit.
+#' @return A character string representing the SI unit extracted from the expression.
+#' @examples
+#' extract_si("m")
+#' # Output: "m"
+#' extract_si("km")
+#' # Output: "km"
+#' extract_si("") # No unit provided
+#' # Output: ""
+#' @importFrom stringr str_length
+#' @export
+extract_si <- function(unit) {
+  if (!is.character(unit)) {
+    stop("Input 'exp' must be a character string.")
+  }
+  if(si_to_exponent(unit)!=1) {
+    return(substr(unit, 2, str_length(unit)))
+  } else{
+    return(unit)
+  }
 }
 
 #' @importFrom sitools f2si
