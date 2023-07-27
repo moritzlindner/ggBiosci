@@ -36,35 +36,42 @@ get_si <- function(val) {
 #' @export si_to_exponent
 si_to_exponent <- function(letter) {
   exponent <- seq(-24L, 24L, 3L)
-  letter <- substr(letter, 1, 1)
-  if (letter == "\u03BC") {
-    letter = "u"
+  if (str_length(letter)>1){
+    letter <- substr(letter, 1, 1)
+    if (letter == "\u03BC") {
+      letter = "u"
+    }
+    sipref <-
+      c("y",
+        "z",
+        "a",
+        "f",
+        "p",
+        "n",
+        "u",
+        "m",
+        "",
+        "k",
+        "M",
+        "G",
+        "T",
+        "P",
+        "E",
+        "Z",
+        "Y")
+    if (!is.null(exponent[sipref == letter])){
+      return(10 ^ exponent[sipref == letter])
+    }else{
+      return(1)
+    }
+  } else{
+    return(1)
   }
 
-  sipref <-
-    c("y",
-      "z",
-      "a",
-      "f",
-      "p",
-      "n",
-      "u",
-      "m",
-      "",
-      "k",
-      "M",
-      "G",
-      "T",
-      "P",
-      "E",
-      "Z",
-      "Y")
-
-  return(10 ^ exponent[sipref == letter])
 }
 
 #' @importFrom sitools f2si
-#' @describeIn ScientificNotation Converts an exponent into corresponding SI unit
+#' @describeIn ScientificNotation Converts an exponent into corresponding SI prefix
 #' @param exp The exponent of a number in scientific notation
 #' @export exponent_to_si
 exponent_to_si <- function(exp) {

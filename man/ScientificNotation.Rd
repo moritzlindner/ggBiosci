@@ -38,7 +38,7 @@ These functions perform conversions between floating-point numbers, engineering 
 \itemize{
 \item \code{si_to_exponent}: Converts an SI prefix or full string into exponent
 
-\item \code{exponent_to_si}: Converts an exponent into corresponding SI unit
+\item \code{exponent_to_si}: Converts an exponent into corresponding SI prefix
 
 \item \code{get_exp_eng}: Gets the exponent of a number in engineering notation
 
